@@ -30,7 +30,7 @@ x_val = np.load("x_val.npy")
 model = load_model('best_model1.h5')
 
 
-def useModel(fileName, no_of_timesteps, model, x_val, unique_x, top_k=5, temperature = 1.0):
+def useModel(fileName, no_of_timesteps, model, x_val, unique_x, top_k=5, temperature = 0.6):
     start = np.random.randint(0, len(x_val) - 1)
     rand_music = x_val[start]
     predictions = []
