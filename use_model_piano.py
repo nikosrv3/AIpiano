@@ -1,24 +1,14 @@
 #library for understanding music
 from music21 import *
 import numpy as np
-#imports for folder access/training split
 import os
 from sklearn.model_selection import train_test_split
-#importing library
 from collections import Counter
-
-#library for visualiation
 import matplotlib.pyplot as plt
-
-#importing model
 from keras.layers import *
 from keras.models import *
 from keras.callbacks import *
 import keras.backend as K
-
-
-from music21 import stream, note, chord, tempo
-import random
 from random import choice
 import pickle
 
@@ -30,7 +20,7 @@ x_val = np.load("x_val.npy")
 model = load_model('best_model1.h5')
 
 
-def useModel(fileName, no_of_timesteps, model, x_val, unique_x, top_k=5, temperature = 0.6):
+def useModel(fileName, no_of_timesteps, model, x_val, unique_x, top_k=5, temperature = 0.4):
     start = np.random.randint(0, len(x_val) - 1)
     rand_music = x_val[start]
     predictions = []
@@ -62,7 +52,7 @@ def useModel(fileName, no_of_timesteps, model, x_val, unique_x, top_k=5, tempera
     convert_to_midi(predicted_notes, fileName)
 
 
-def convert_to_midi(prediction_output, fileName, tempo_value=120, time_signature='4/4'):
+def convert_to_midi(prediction_output, fileName, tempo_value=100, time_signature='4/4'):
     offset = 0
     output_notes = []
     
