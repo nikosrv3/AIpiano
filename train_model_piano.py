@@ -44,9 +44,7 @@ def read_midi(file):
                     if octave == 4 or octave == 5:
                         notes.append(note_name)
                 
-                #  #chord
-                # elif isinstance(element, chord.Chord):
-                #     notes.append('.'.join(str(n) for n in element.normalOrder))
+                
 
     return np.array(notes)
 
